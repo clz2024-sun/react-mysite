@@ -1,7 +1,8 @@
 //import 라이브러리
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 
 //css  전역에 적용되지만 #user 아래만 적용되도록 css를 코딩했음
 import '../../css/user.css'
@@ -9,6 +10,8 @@ import '../../css/user.css'
 
 const Test = () => {
     /*---라우터 관련-------------------------------*/
+    const navigate = useNavigate();
+
     /*---상태관리 변수들(값이 변화면 화면 랜더링 )---*/
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
@@ -35,7 +38,7 @@ const Test = () => {
         //데이터모으고 묶고
         const userVo = {
             id: id,
-            passowrd: pw
+            password: pw
         };
         console.log(userVo);
 
@@ -49,6 +52,20 @@ const Test = () => {
             responseType: 'json' //수신타입
         }).then(response => {
             console.log(response); //수신데이타
+            console.log(response.data.apiData); //수신데이타
+
+            ;    
+            //해더에서 토큰꺼내기
+            const token =response.headers['authorization'].split(' ')[1];
+            console.log(token);
+
+            //로컬스토리지에 토큰저장
+            localStorage.setItem("token", token);
+            //로컬스토리지에 authUser저장
+            localStorage.setItem("authUser", JSON.stringify(response.data.apiData));
+
+
+            navigate("/");
 
         }).catch(error => {
             console.log(error);

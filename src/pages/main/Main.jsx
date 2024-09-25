@@ -1,5 +1,5 @@
 //import 라이브러리
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
 //css  전역에 적용되지만 #main 아래만 적용되도록 css를 코딩했음
@@ -8,9 +8,28 @@ import '../../css/main.css'
 const Main = () => {
     /*---라우터 관련-------------------------------*/
     /*---상태관리 변수들(값이 변화면 화면 랜더링 )---*/
+    const [token, setToken] = useState(localStorage.getItem('token'));
+    const [authUser, setAuthUser] = useState(JSON.parse(localStorage.getItem('authUser')));
+    console.log(authUser);
+    
     /*---일반 변수--------------------------------*/
+    //const token = localStorage.getItem('token');
+    
     /*---일반 메소드 -----------------------------*/
     /*---훅(useEffect)+이벤트(handle)메소드-------*/
+    const handleLogout = ()=>{
+        console.log('로그아웃');
+
+        //로컬스토리지에 token 삭제
+        localStorage.removeItem('token');
+        //로컬스토리지에 authUser 삭제
+        localStorage.removeItem('authUser');
+        
+        //화면반영을 위한 상태값 변경
+        setToken(null);
+        setAuthUser(null);
+        
+    };
     return (
         <>
             
@@ -20,21 +39,22 @@ const Main = () => {
                     <h1>
                         <Link to="" rel="noreferrer noopener">MySite</Link>
                     </h1>
-                    {/* 
-                    <!-- 
-                    <ul>
-                        <li>황일영 님 안녕하세요^^</li>
-                        <li><Link to="" className="btn_s" rel="noreferrer noopener">로그아웃</Link></li>
-                        <li><Link to="" className="btn_s" rel="noreferrer noopener">회원정보수정</Link></li>
-                    </ul>
-                    -->	
-                    */}
-
-                    <ul>
-                        <li><Link to="" className="btn_s">로그인</Link></li>
-                        <li><Link to="" className="btn_s">회원가입</Link></li>
-                    </ul>
                     
+                    {
+                        (token !== null)?(
+                            <ul>
+                                <li>{authUser.name} 님 안녕하세요^^</li>
+                                <li><button className="btn_s" onClick={handleLogout}>로그아웃</button></li>
+                                <li><Link to="" className="btn_s" rel="noreferrer noopener">회원정보수정</Link></li>
+                            </ul>
+                        ):(
+                            <ul>
+                                <li><Link to="/user/loginform" className="btn_s" rel="noreferrer noopener">로그인</Link></li>
+                                <li><Link to="" className="btn_s" rel="noreferrer noopener">회원가입</Link></li>
+                            </ul>
+                        ) 
+                    }
+
                 </div>
                 {/* <!-- //header --> */}
 
