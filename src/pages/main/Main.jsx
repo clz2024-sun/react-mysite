@@ -2,6 +2,8 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
+import Footer from '../include/Footer';
+
 //css  전역에 적용되지만 #main 아래만 적용되도록 css를 코딩했음
 import '../../css/main.css'
 
@@ -112,11 +114,11 @@ const Main = () => {
                 {/* <!-- //container --> */}        
 
 
-                <div id="footer">
-                    Copyright ⓒ 2020 황일영. All right reserved
-                </div>
+                {/* <!-- footer --> */}
+                <Footer/>
                 {/* <!-- //footer --> */}
 
+               
             </div>
             {/* <!-- //wrap --> */}            
         
