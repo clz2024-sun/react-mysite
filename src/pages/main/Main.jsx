@@ -6,7 +6,7 @@ import Header from '../include/Header';
 import Footer from '../include/Footer';
 
 //css  전역에 적용되지만 #main 아래만 적용되도록 css를 코딩했음
-import '../../css/main.css'
+import '../../css/main.css';
 
 const Main = () => {
     /*---라우터 관련-------------------------------*/

@@ -24,7 +24,7 @@ const EditForm = () => {
         console.log('마운트 되었을때');
         axios({
             method: 'get',
-            url: 'http://localhost:9000/api/users/me',
+            url: `${process.env.REACT_APP_API_URL}/api/users/me`,
             headers: { "Authorization": `Bearer ${token}` }, 
 
             responseType: 'json' //수신타입
@@ -79,7 +79,7 @@ const EditForm = () => {
 
         axios({
             method: 'put', 			// put, post, delete                   
-            url: 'http://localhost:9000/api/users/me',
+            url: `${process.env.REACT_APP_API_URL}/api/users/me`,
             headers: { 
                 "Content-Type": "application/json; charset=utf-8",
                 "Authorization": `Bearer ${token}`

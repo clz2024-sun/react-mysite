@@ -28,7 +28,7 @@ const Header = () => {
         <>
             <div id="header" className="clearfix">
                 <h1>
-                    <Link to="" rel="noreferrer noopener">MySite</Link>
+                    <Link to="/" rel="noreferrer noopener">MySite</Link>
                 </h1>
                 
                 {
@@ -54,8 +54,8 @@ const Header = () => {
                 <ul className="clearfix">
                     <li><Link to="" rel="noreferrer noopener">입사지원서</Link></li>
                     <li><Link to="" rel="noreferrer noopener">게시판</Link></li>
-                    <li><Link to="" rel="noreferrer noopener">갤러리</Link></li>
-                    <li><Link to="" rel="noreferrer noopener">방명록</Link></li>
+                    <li><Link to="/attach/form2" rel="noreferrer noopener">갤러리</Link></li>
+                    <li><Link to="/guest" rel="noreferrer noopener">방명록</Link></li>
                 </ul>
             </div>
             {/* <!-- //nav --> */}

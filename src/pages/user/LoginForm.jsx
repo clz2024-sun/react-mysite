@@ -1,6 +1,6 @@
 //import 라이브러리
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from '../include/Header';
@@ -47,7 +47,7 @@ const Test = () => {
         //전송
         axios({
             method: 'post',
-            url: 'http://localhost:9000/api/users/login',
+            url: `${process.env.REACT_APP_API_URL}/api/users/login`,
             headers: { "Content-Type": "application/json; charset=utf-8" },  // post put
             data: userVo,     // put, post,  JSON(자동변환됨)
 
@@ -72,9 +72,6 @@ const Test = () => {
         }).catch(error => {
             console.log(error);
         });
-
-
-        //응답처리
 
 
     };
