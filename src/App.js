@@ -11,6 +11,9 @@ import AttachResult from './pages/attach/Result';
 import GuestAddList from './pages/guest/AddList';
 import GuestDelForm from './pages/guest/DelForm';
 
+
+import Chat from './pages/ai/Chat';
+
 //css 전체공통적용
 import './css/mysite.css'
 
@@ -31,6 +34,8 @@ function App() {
 
           <Route path='/guest' element={<GuestAddList />} />
           <Route path='/guest/delform/:no' element={<GuestDelForm />} />
+
+          <Route path='/ai/chat' element={<Chat />} />
 
         </Routes>
       </BrowserRouter>
